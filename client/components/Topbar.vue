@@ -5,7 +5,7 @@
             v-if="auth && !confirmed"
             class="border-t border-b text-brown bg-gold-lightest font-bold text-center px-4 py-5"
         >
-            <p class="text-lg">
+            <p class="text-lg" id='confirm-email'>
                 Please confirm your email address. Didn&rsquo;t receive an email
                 ?
                 <span
@@ -23,6 +23,7 @@
             <logo />
             <div class="lg:inline-block" v-if="!auth">
                 <router-link
+                    id='login-button'
                     to="/auth/login"
                     class="no-underline text-white mr-6 text-brown hover:text-brown-darkest trans-30"
                 >
@@ -30,6 +31,7 @@
                 </router-link>
 
                 <router-link
+                    id='register-button'
                     to="/auth/register"
                     class="no-underline focus:outline-none text-white px-3 py-2 border-2 inline border-brown hover:border-brown-darkest rounded-full text-brown hover:text-brown-darkest trans-30"
                 >
@@ -37,11 +39,12 @@
                 </router-link>
             </div>
             <div class="flex items-center" v-else>
-                <span class="cursor-pointer hover:text-brown-darker text-brown">
+                <span id="auth-username" class="cursor-pointer hover:text-brown-darker text-brown">
                     Hey, <strong>{{ user.name }}</strong>
                 </span>
 
                 <span
+                    id='auth-logout'
                     @click="unsetAuth"
                     class="ml-8 cursor-pointer hover:text-brown-darker text-brown"
                 >
